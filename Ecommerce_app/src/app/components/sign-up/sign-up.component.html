@@ -1,0 +1,91 @@
+<!-- <img class="wave" src="assets/form/img/wave.png">
+<div class="container">
+    <div class="img">
+        <img src="assets/form/img/bg.svg">
+    </div>
+    <div class="login-content">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" style="margin-bottom: 6rem;">
+            <img src="assets/form/img/avatar.svg">
+            <h3 class="title">SignUp</h3>
+               <div class="input-div one" style="margin-top: 2rem;">
+                  <div class="i">
+                          <i class="fas fa-user"></i>
+                  </div>
+                  <div class="div"  >
+                         
+                          <input type="text" placeholder="Username" formControlName="userName" class="input">    
+                  </div>
+               </div>
+               <div class="alert alert-danger" role="alert" *ngIf="submitted && f.userName.errors">
+                <div *ngIf="f.userName.errors.required">Username is required</div>
+              </div> 
+
+               <div class="input-div one">
+                <div class="i">
+                        <i class="fa fa-envelope"></i>
+                </div>
+                <div class="div">
+                        <input type="text" placeholder="Mail" formControlName="email" class="input">
+                </div>
+             </div>
+              <div *ngIf="submitted && f.email.errors" class="alert alert-danger">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
+            <div *ngIf="errMsg" class="alert alert-danger">{{errMsg}}</div>
+
+               <div class="input-div pass">
+                  <div class="i"> 
+                       <i class="fas fa-lock"></i>
+                  </div>
+                  <div class="div">
+                    
+                       <input type="password" placeholder="Password" formControlName="password" class="input">
+               </div>
+            </div>
+            <div *ngIf="submitted && f.password.errors" class="alert alert-danger">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+            </div>
+            
+
+      
+            <a routerLink="/login">Already account login here?</a>
+          <input type="submit" class="btn" value="SignUp">
+            <button class="btn">Register</button>
+            <button class="btn" type="reset" (click)="onReset()">Reset</button>
+        </form>
+    </div>
+</div> -->
+
+<img class="wave" src="assets/form/img/wave.png"/>
+
+<div class="container">
+    <div class="img">
+        <img src="assets/form/img/bg.svg">
+  </div>
+
+<div class="login-content" style="margin-bottom: 7rem;">
+<div class="body">
+  <h2 class="text-center">SignUp</h2>
+<form #signup="ngForm">
+    <img src="assets/form/img/avatar.svg"><br/><br/>
+    <input type="text" class="form-control" name="name" #name="ngModel" [ngModel] placeholder="Name" required/>
+    <div class="alert alert-danger mt-2" *ngIf="name.invalid && name.touched">Name is required</div><br/>
+    <input type="email" email class="form-control" name="semail" #semail="ngModel" [ngModel] placeholder="Email" required/>
+    <div class="alert alert-danger mt-2" *ngIf="semail.errors?.required && semail.touched">Email is required</div>
+    <div class="alert alert-danger mt-2" *ngIf="semail.errors?.email && semail.touched">Please enter valid email</div>
+    <div class="alert alert-danger mt-2" *ngIf="errorMsg"><p>This email already exists</p></div><br/>
+    <input type="password" minlength="6" class="form-control" name="pass" #pass="ngModel" [ngModel] placeholder="Password" required/>
+    <div class="alert alert-danger mt-2" *ngIf="pass.errors?.required && pass.touched">Password is required</div>
+    <div class="alert alert-danger mt-2" *ngIf="pass.errors?.minlength  && pass.touched">Password should be alteast 6 letters</div><br/>
+    <input type="password" class="form-control" name="cpass" #cpass="ngModel" [ngModel] placeholder="Confirm Password" required/>
+    <div class="alert alert-danger mt-2" *ngIf="cpass.errors?.required && cpass.touched">Confirm Password is required</div>
+    <div class="alert alert-danger mt-2" *ngIf="pass.value !== cpass.value && cpass.touched">Password and Confirm Password are not same</div>
+    <a routerLink="/login" class="mt-2">Already account login here?</a>
+    <button  class="btn btn-primary" [disabled]="!signup.valid" (click)="dataCapture(signup)">Submit</button>
+    <button type="button" class="btn btn-info" (click)="signup.resetForm()">Reset</button>
+</form>
+</div>
+</div>
+</div>

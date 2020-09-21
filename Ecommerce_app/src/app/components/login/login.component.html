@@ -1,0 +1,26 @@
+
+ <img class="wave" src="assets/form/img/wave.png"/>
+<div class="container">
+    <div class="img">
+        <img src="assets/form/img/bg.svg">
+  </div>
+
+<div class="login-content" style="margin-bottom: 7rem;">
+<div class="body">
+  <h2 class="text-center">Login</h2>
+<form #login="ngForm">
+    <img src="assets/form/img/avatar.svg"><br/><br/>
+    <input type="email" email class="form-control" name="semail" #semail="ngModel" [ngModel] placeholder="Email" required/>
+    <div class="alert alert-danger mt-2" *ngIf="semail.errors?.required && semail.touched">Email is required</div>
+    <div class="alert alert-danger mt-2" *ngIf="semail.errors?.email && semail.touched">Please enter valid email</div>
+   <br/>
+    <input type="password" minlength="6" class="form-control" name="pass" #pass="ngModel" [ngModel] placeholder="Password" required/>
+    <div class="alert alert-danger mt-2" *ngIf="pass.errors?.required && pass.touched">Password is required</div>
+   
+    <a routerLink="/signup" class="mt-2">Don't have account register here?</a>
+    <button  class="btn btn-primary" [disabled]="!login.valid" (click)="dataCapture(login)">Login</button>
+    <div class="alert alert-danger mt-2" *ngIf="errorMsg"><p>Email or password is invalid</p></div>
+</form>
+</div>
+</div>
+</div> 
